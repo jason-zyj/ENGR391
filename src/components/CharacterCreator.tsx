@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { User, Palette, Shirt } from 'lucide-react';
 import { useGame } from '../contexts/GameContext';
+import Avatar from './Avatar';
 
 interface CharacterCreatorProps {
   onComplete: () => void;
@@ -76,6 +77,18 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
+          <div className="flex flex-col items-center justify-center">
+            <Avatar
+              name={name}
+              appearance={{
+                skinTone,
+                hairStyle,
+                hairColor,
+                outfit,
+              }}
+            />
+          </div>
+
           <div className="space-y-6">
             <div>
               <label className="flex items-center gap-2 text-lg font-semibold text-gray-700 mb-3">
@@ -202,24 +215,6 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
                     {o.label}
                   </button>
                 ))}
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border-2 border-blue-200">
-              <h3 className="font-semibold text-gray-800 mb-2">Preview</h3>
-              <div className="text-gray-700 space-y-1">
-                <p>
-                  <span className="font-medium">Name:</span> {name || '(Not set)'}
-                </p>
-                <p>
-                  <span className="font-medium">Pronouns:</span> {pronouns}
-                </p>
-                <p>
-                  <span className="font-medium">Style:</span>{' '}
-                  {hairStyles.find((s) => s.id === hairStyle)?.label}{' '}
-                  {hairColors.find((c) => c.id === hairColor)?.label} hair,{' '}
-                  {outfits.find((o) => o.id === outfit)?.label.toLowerCase()} outfit
-                </p>
               </div>
             </div>
           </div>
