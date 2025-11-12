@@ -12,7 +12,7 @@ import SocialMediaScroll from './minigames/SocialMediaScroll';
 import FactCheck from './minigames/FactCheck';
 import ScenarioSorting from './minigames/ScenarioSorting';
 import GameSummary from './GameSummary';
-import GameUI from './GameUI';
+import HUD from './HUD';
 
 export default function SceneManager() {
   const {
@@ -130,10 +130,10 @@ export default function SceneManager() {
 
   return (
     <div className={`min-h-screen ${currentScene.background} transition-all duration-1000`}>
-      <GameUI />
+      <HUD />
 
-      <div className="flex flex-col justify-end min-h-screen p-4 pb-8">
-        <div className="space-y-6">
+      <div className="pt-16 pb-[10%] px-4 sm:px-6 md:px-8 min-h-screen flex flex-col justify-end">
+        <div className="space-y-3 sm:space-y-4 md:space-y-6">
           {!showChoices && currentScene.dialogue.length > 0 && (
             <DialogueBox
               dialogue={currentScene.dialogue[dialogueIndex]}

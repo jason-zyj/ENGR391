@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { User, Palette, Shirt } from 'lucide-react';
 import { useGame } from '../contexts/GameContext';
 import Avatar from './Avatar';
+import HUD from './HUD';
 
 interface CharacterCreatorProps {
   onComplete: () => void;
@@ -69,27 +70,30 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-400 to-blue-500 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Create Your Character</h1>
-          <p className="text-gray-600">This is your story. Make it yours!</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-400 to-blue-500">
+      <HUD />
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="flex flex-col items-center justify-center">
-            <Avatar
-              name={name}
-              appearance={{
-                skinTone,
-                hairStyle,
-                hairColor,
-                outfit,
-              }}
-            />
+      <div className="pt-16 px-4 sm:px-6 md:px-8 pb-12 flex items-center justify-center min-h-screen">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full p-6 sm:p-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Create Your Character</h1>
+            <p className="text-gray-600 text-sm sm:text-base">This is your story. Make it yours!</p>
           </div>
 
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="flex flex-col items-center justify-center">
+              <Avatar
+                name={name}
+                appearance={{
+                  skinTone,
+                  hairStyle,
+                  hairColor,
+                  outfit,
+                }}
+              />
+            </div>
+
+            <div className="space-y-4 sm:space-y-6">
             <div>
               <label className="flex items-center gap-2 text-lg font-semibold text-gray-700 mb-3">
                 <User className="w-5 h-5" />
@@ -217,16 +221,18 @@ export default function CharacterCreator({ onComplete }: CharacterCreatorProps) 
                 ))}
               </div>
             </div>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={handleCreate}
-            className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold text-xl py-4 px-12 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
-          >
-            Start My Journey
-          </button>
+          <div className="mt-6 sm:mt-8 flex justify-center">
+            <button
+              onClick={handleCreate}
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold text-base sm:text-lg sm:text-xl py-3 sm:py-4 px-8 sm:px-12 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-blue-300 min-h-[44px]"
+              tabIndex={0}
+            >
+              Start My Journey
+            </button>
+          </div>
         </div>
       </div>
     </div>
