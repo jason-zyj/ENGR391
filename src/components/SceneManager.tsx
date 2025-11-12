@@ -5,6 +5,7 @@ import { Choice } from '../types/game';
 import DialogueBox from './DialogueBox';
 import ChoiceBox from './ChoiceBox';
 import CharacterCreator from './CharacterCreator';
+import GameGuide from './GameGuide';
 import EmotionRecognition from './minigames/EmotionRecognition';
 import BreathingRhythm from './minigames/BreathingRhythm';
 import SocialMediaScroll from './minigames/SocialMediaScroll';
@@ -93,6 +94,14 @@ export default function SceneManager() {
   const handleCharacterCreationComplete = () => {
     navigateToScene('first_day');
   };
+
+  const handleGameGuideComplete = () => {
+    navigateToScene('character_creation');
+  };
+
+  if (currentScene.id === 'game_guide') {
+    return <GameGuide onComplete={handleGameGuideComplete} />;
+  }
 
   if (currentScene.id === 'character_creation') {
     return <CharacterCreator onComplete={handleCharacterCreationComplete} />;

@@ -26,12 +26,21 @@ export const scenes: Record<string, Scene> = {
     ],
     choices: [
       {
-        id: 'create_character',
-        text: 'Create My Character',
-        nextSceneId: 'character_creation',
+        id: 'start_game',
+        text: 'Start the Game',
+        nextSceneId: 'game_guide',
         effects: {},
       },
     ],
+  },
+
+  game_guide: {
+    id: 'game_guide',
+    act: 0,
+    title: 'How to Play',
+    background: 'bg-gradient-to-br from-cyan-400 to-teal-500',
+    dialogue: [],
+    choices: [],
   },
 
   character_creation: {
